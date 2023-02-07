@@ -13,16 +13,20 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.modules.lic.repository;
+package me.zhengjie.modules.lic.service.mapstruct;
 
-import me.zhengjie.modules.lic.domain.LicApp;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import me.zhengjie.base.BaseMapper;
+import me.zhengjie.modules.lic.domain.LicType;
+import me.zhengjie.modules.lic.service.dto.LicTypeDto;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
 /**
 * @website https://eladmin.vip
 * @author whwu
 * @date 2023-02-07
 **/
-public interface LicAppRepository extends JpaRepository<LicApp, Long>, JpaSpecificationExecutor<LicApp> {
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public interface LicTypeMapper extends BaseMapper<LicTypeDto, LicType> {
+
 }

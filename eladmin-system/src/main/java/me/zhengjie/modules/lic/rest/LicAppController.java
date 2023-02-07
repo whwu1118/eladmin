@@ -33,11 +33,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
 * @website https://eladmin.vip
 * @author whwu
-* @date 2023-02-06
+* @date 2023-02-07
 **/
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "/api/product管理")
+@Api(tags = "/api/lic/app管理")
 @RequestMapping("/api/licApp")
 public class LicAppController {
 
@@ -52,24 +52,24 @@ public class LicAppController {
     }
 
     @GetMapping
-    @Log("查询/api/product")
-    @ApiOperation("查询/api/product")
+    @Log("查询/api/lic/app")
+    @ApiOperation("查询/api/lic/app")
     @PreAuthorize("@el.check('licApp:list')")
     public ResponseEntity<Object> queryLicApp(LicAppQueryCriteria criteria, Pageable pageable){
         return new ResponseEntity<>(licAppService.queryAll(criteria,pageable),HttpStatus.OK);
     }
 
     @PostMapping
-    @Log("新增/api/product")
-    @ApiOperation("新增/api/product")
+    @Log("新增/api/lic/app")
+    @ApiOperation("新增/api/lic/app")
     @PreAuthorize("@el.check('licApp:add')")
     public ResponseEntity<Object> createLicApp(@Validated @RequestBody LicApp resources){
         return new ResponseEntity<>(licAppService.create(resources),HttpStatus.CREATED);
     }
 
     @PutMapping
-    @Log("修改/api/product")
-    @ApiOperation("修改/api/product")
+    @Log("修改/api/lic/app")
+    @ApiOperation("修改/api/lic/app")
     @PreAuthorize("@el.check('licApp:edit')")
     public ResponseEntity<Object> updateLicApp(@Validated @RequestBody LicApp resources){
         licAppService.update(resources);
@@ -77,8 +77,8 @@ public class LicAppController {
     }
 
     @DeleteMapping
-    @Log("删除/api/product")
-    @ApiOperation("删除/api/product")
+    @Log("删除/api/lic/app")
+    @ApiOperation("删除/api/lic/app")
     @PreAuthorize("@el.check('licApp:del')")
     public ResponseEntity<Object> deleteLicApp(@RequestBody Long[] ids) {
         licAppService.deleteAll(ids);

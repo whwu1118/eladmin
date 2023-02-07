@@ -25,6 +25,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import org.hibernate.annotations.*;
 import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.io.Serializable;
 
 /**
@@ -35,18 +36,23 @@ import java.io.Serializable;
 **/
 @Entity
 @Data
-@Table(name="lic_app")
-public class LicApp implements Serializable {
+@Table(name="lic_type")
+public class LicType implements Serializable {
 
     @Id
-    @Column(name = "`app_id`")
+    @Column(name = "`id`")
     @ApiModelProperty(value = "ID")
-    private Long appId;
+    private Long id;
 
-    @Column(name = "`name`",nullable = false)
+    @Column(name = "`type_name`",unique = true,nullable = false)
     @NotBlank
-    @ApiModelProperty(value = "产品名称")
-    private String name;
+    @ApiModelProperty(value = "类型名称")
+    private String typeName;
+
+    @Column(name = "`price`",nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "价格")
+    private BigDecimal price;
 
     @Column(name = "`create_time`")
     @CreationTimestamp
@@ -54,11 +60,11 @@ public class LicApp implements Serializable {
     private Timestamp createTime;
 
     @Column(name = "`create_by`")
-    @ApiModelProperty(value = "创建者")
+    @ApiModelProperty(value = "创建人")
     private String createBy;
 
     @Column(name = "`update_by`")
-    @ApiModelProperty(value = "更新者")
+    @ApiModelProperty(value = "更新人")
     private String updateBy;
 
     @Column(name = "`update_time`")
@@ -66,7 +72,17 @@ public class LicApp implements Serializable {
     @ApiModelProperty(value = "更新时间")
     private Timestamp updateTime;
 
-    public void copy(LicApp source){
+    @Column(name = "`limit_use`",nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "最多使用次数")
+    private Integer limitUse;
+
+    @Column(name = "`enabled`",nullable = false)
+    @NotNull
+    @ApiModelProperty(value = "启用状态")
+    private Boolean enabled;
+
+    public void copy(LicType source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }

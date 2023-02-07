@@ -22,7 +22,7 @@ import me.zhengjie.annotation.Query;
 /**
 * @website https://eladmin.vip
 * @author whwu
-* @date 2023-02-06
+* @date 2023-02-07
 **/
 @Data
 public class LicAppQueryCriteria{

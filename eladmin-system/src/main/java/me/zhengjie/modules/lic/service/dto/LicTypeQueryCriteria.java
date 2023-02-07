@@ -13,16 +13,25 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 */
-package me.zhengjie.modules.lic.repository;
+package me.zhengjie.modules.lic.service.dto;
 
-import me.zhengjie.modules.lic.domain.LicApp;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import lombok.Data;
+import java.util.List;
+import me.zhengjie.annotation.Query;
 
 /**
 * @website https://eladmin.vip
 * @author whwu
 * @date 2023-02-07
 **/
-public interface LicAppRepository extends JpaRepository<LicApp, Long>, JpaSpecificationExecutor<LicApp> {
+@Data
+public class LicTypeQueryCriteria{
+
+    /** 模糊 */
+    @Query(type = Query.Type.INNER_LIKE)
+    private String typeName;
+
+    /** 精确 */
+    @Query
+    private Boolean enabled;
 }

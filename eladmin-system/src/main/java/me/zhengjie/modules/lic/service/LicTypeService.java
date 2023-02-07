@@ -15,9 +15,9 @@
 */
 package me.zhengjie.modules.lic.service;
 
-import me.zhengjie.modules.lic.domain.LicApp;
-import me.zhengjie.modules.lic.service.dto.LicAppDto;
-import me.zhengjie.modules.lic.service.dto.LicAppQueryCriteria;
+import me.zhengjie.modules.lic.domain.LicType;
+import me.zhengjie.modules.lic.service.dto.LicTypeDto;
+import me.zhengjie.modules.lic.service.dto.LicTypeQueryCriteria;
 import org.springframework.data.domain.Pageable;
 import java.util.Map;
 import java.util.List;
@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 * @author whwu
 * @date 2023-02-07
 **/
-public interface LicAppService {
+public interface LicTypeService {
 
     /**
     * 查询数据分页
@@ -38,34 +38,34 @@ public interface LicAppService {
     * @param pageable 分页参数
     * @return Map<String,Object>
     */
-    Map<String,Object> queryAll(LicAppQueryCriteria criteria, Pageable pageable);
+    Map<String,Object> queryAll(LicTypeQueryCriteria criteria, Pageable pageable);
 
     /**
     * 查询所有数据不分页
     * @param criteria 条件参数
-    * @return List<LicAppDto>
+    * @return List<LicTypeDto>
     */
-    List<LicAppDto> queryAll(LicAppQueryCriteria criteria);
+    List<LicTypeDto> queryAll(LicTypeQueryCriteria criteria);
 
     /**
      * 根据ID查询
-     * @param appId ID
-     * @return LicAppDto
+     * @param id ID
+     * @return LicTypeDto
      */
-    LicAppDto findById(Long appId);
+    LicTypeDto findById(Long id);
 
     /**
     * 创建
     * @param resources /
-    * @return LicAppDto
+    * @return LicTypeDto
     */
-    LicAppDto create(LicApp resources);
+    LicTypeDto create(LicType resources);
 
     /**
     * 编辑
     * @param resources /
     */
-    void update(LicApp resources);
+    void update(LicType resources);
 
     /**
     * 多选删除
@@ -79,5 +79,5 @@ public interface LicAppService {
     * @param response /
     * @throws IOException /
     */
-    void download(List<LicAppDto> all, HttpServletResponse response) throws IOException;
+    void download(List<LicTypeDto> all, HttpServletResponse response) throws IOException;
 }

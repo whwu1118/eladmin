@@ -24,7 +24,7 @@ import org.mapstruct.ReportingPolicy;
 /**
 * @website https://eladmin.vip
 * @author whwu
-* @date 2023-02-06
+* @date 2023-02-07
 **/
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface LicAppMapper extends BaseMapper<LicAppDto, LicApp> {

@@ -15,7 +15,7 @@
 */
 package me.zhengjie.modules.lic.repository;
 
-import me.zhengjie.modules.lic.domain.LicApp;
+import me.zhengjie.modules.lic.domain.LicType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -24,5 +24,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 * @author whwu
 * @date 2023-02-07
 **/
-public interface LicAppRepository extends JpaRepository<LicApp, Long>, JpaSpecificationExecutor<LicApp> {
+public interface LicTypeRepository extends JpaRepository<LicType, Long>, JpaSpecificationExecutor<LicType> {
+    /**
+    * 根据 TypeName 查询
+    * @param type_name /
+    * @return /
+    */
+    LicType findByTypeName(String type_name);
 }

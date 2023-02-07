@@ -17,6 +17,7 @@ package me.zhengjie.modules.lic.service.dto;
 
 import lombok.Data;
 import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.io.Serializable;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.ToStringSerializer;
@@ -28,25 +29,34 @@ import com.alibaba.fastjson.serializer.ToStringSerializer;
 * @date 2023-02-07
 **/
 @Data
-public class LicAppDto implements Serializable {
+public class LicTypeDto implements Serializable {
 
     /** ID */
     /** 防止精度丢失 */
     @JSONField(serializeUsing = ToStringSerializer.class)
-    private Long appId;
+    private Long id;
 
-    /** 产品名称 */
-    private String name;
+    /** 类型名称 */
+    private String typeName;
+
+    /** 价格 */
+    private BigDecimal price;
 
     /** 创建时间 */
     private Timestamp createTime;
 
-    /** 创建者 */
+    /** 创建人 */
     private String createBy;
 
-    /** 更新者 */
+    /** 更新人 */
     private String updateBy;
 
     /** 更新时间 */
     private Timestamp updateTime;
+
+    /** 最多使用次数 */
+    private Integer limitUse;
+
+    /** 启用状态 */
+    private Boolean enabled;
 }
